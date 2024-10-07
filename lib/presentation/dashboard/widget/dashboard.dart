@@ -7,7 +7,9 @@ import 'package:finance_digest/widget/textcustom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:external_app_launcher/external_app_launcher.dart';
 
 class Dashboard extends StatelessWidget {
   final News news;
@@ -80,25 +82,28 @@ class Dashboard extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 10),
-                    InkWell(
-                      onTap: () {
-                        controller.launchURL(news.url);
+                    Link(
+                      uri: Uri.parse(news.url),
+                      builder: (context, followLink) {
+                        return InkWell(
+                          onTap: followLink,
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxHeight: 72,
+                              maxWidth: 260,
+                            ),
+                            child: TextCustom(
+                              text: news.summary,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18,
+                              textAlign: TextAlign.left,
+                              color: ColorConstant.whiteScreen,
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        );
                       },
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxHeight: 72,
-                          maxWidth: 260,
-                        ),
-                        child: TextCustom(
-                          text: news.summary,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18,
-                          textAlign: TextAlign.left,
-                          color: ColorConstant.whiteScreen,
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
                     ),
                   ],
                 ),
