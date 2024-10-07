@@ -92,6 +92,7 @@ class InputFieldState extends State<InputField> {
           height: widget.height ?? 50.0,
           child: TextFormField(
               textInputAction: widget.textInputAction,
+              
               controller: widget.controller,
               focusNode: focusNode,
               autofocus: false,
@@ -121,6 +122,7 @@ class InputFieldState extends State<InputField> {
                   fontSize: 20.0,
                   fontWeight: FontWeight.w400,
                 ),
+                contentPadding: const EdgeInsets.symmetric(horizontal:0.0, vertical: 10),
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
                     color: ColorConstant
