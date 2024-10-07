@@ -12,7 +12,7 @@ class Loader extends StatelessWidget {
     return Center(
       child:
          Lottie.asset(
-          'assets/images/animations/shimmer_animation.json',
+          'assets/images/animations/loading_dark_ani.json',
           height: 200,
           width: MediaQuery.of(context).size.width / 1.8,
           fit: BoxFit.fill,

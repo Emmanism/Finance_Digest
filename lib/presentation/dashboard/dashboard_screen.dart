@@ -70,9 +70,9 @@ class _DashboardScreenState extends State<DashboardScreen>
         body:  SafeArea(child: Obx(() {
         if (controller.isLoading.value) {
           return Center(
-              child: CircularProgressIndicator(
+              child: /* CircularProgressIndicator(
                 color: ColorConstant.whiteScreen,
-              ));
+              ) */Loader());
         }  else if (controller.error.value.isNotEmpty) {
           return Container();
         } else {
