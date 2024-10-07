@@ -8,6 +8,7 @@ import 'package:finance_digest/widget/textcustom.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 
 class LegalNameScreen extends StatelessWidget {
@@ -95,8 +96,9 @@ class LegalNameScreen extends StatelessWidget {
       floatingActionButton: SafeArea(
         child: Obx(() {
           return FloatingActionButton(
-            backgroundColor:
-                isTyped.value ? ColorConstant.buttonColor : ColorConstant.button,
+            backgroundColor: isTyped.value
+                ? ColorConstant.buttonColor
+                : ColorConstant.button,
             onPressed: () {
               controller.onTapStore();
             },
@@ -107,7 +109,13 @@ class LegalNameScreen extends StatelessWidget {
               color: ColorConstant.whiteScreen,
             ),
             shape: CircleBorder(side: BorderSide.none),
-          );
+          )
+              .animate(
+                delay: Duration(seconds: 1),
+                onPlay: (controller) =>
+                    controller.repeat(period: Duration(seconds: 3)),
+              )
+              .shakeY(delay: Duration(seconds: 1));
         }),
       ),
     );

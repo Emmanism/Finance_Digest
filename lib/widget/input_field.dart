@@ -141,8 +141,8 @@ class InputFieldState extends State<InputField> {
                 ),
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: ColorConstant.userColor, // Bottom border color when not focused
-                    width: 1.0, // Adjust the thickness
+                    color: ColorConstant.userColor, 
+                    width: 1.0, 
                   ),
                 ),
                 border: OutlineInputBorder(

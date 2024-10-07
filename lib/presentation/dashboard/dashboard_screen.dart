@@ -64,7 +64,7 @@ class _DashboardScreenState extends State<DashboardScreen>
           );
           }),
           elevation: 0,
-          leadingWidth: 5,
+          leadingWidth: 0,
         ),
         body:  SafeArea(child: Obx(() {
         if (controller.isLoading.value) {

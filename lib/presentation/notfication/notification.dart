@@ -6,6 +6,7 @@ import 'package:finance_digest/widget/image_constant.dart';
 import 'package:finance_digest/widget/textcustom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -25,20 +26,24 @@ class _NotificationScreenState extends State<NotificationScreen> {
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment
-              .spaceBetween, // Space between content and button
+              .spaceBetween, 
           children: [
             Expanded(
-              // This expands the content to the center
               child: Center(
                 child: Column(
                   mainAxisAlignment:
-                      MainAxisAlignment.center, // Centers the content
+                      MainAxisAlignment.center,
                   children: [
                     CustomImageView(
                       svgPath: ImageConstant.imgFrameMessage,
                       height: 98,
                       width: 98,
-                    ),
+                    ).animate(
+                             delay: Duration(seconds: 1),  
+                              onPlay: (controller) => controller.repeat(period: Duration(seconds: 3)), 
+                      ).shakeY(
+                             delay:Duration(seconds:1)
+                      ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: Align(

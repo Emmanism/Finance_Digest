@@ -65,7 +65,11 @@ class NotificationController extends GetxController {
               ),
               child: CupertinoDialogAction(
                 onPressed: () {
-                  Get.to(const DashboardScreen());
+                  Get.to(
+                    const DashboardScreen(),
+                      transition: Transition.zoom,
+                      duration: Duration(seconds: 1)
+                    );
                 },
                 isDestructiveAction: true,
                 child: TextCustom(

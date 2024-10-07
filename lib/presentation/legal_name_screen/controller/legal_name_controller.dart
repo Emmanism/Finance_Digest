@@ -23,6 +23,10 @@ class LegalNameController extends GetxController {
             'Success', 'Account created Sucessfully');
    await Future.delayed(Duration(milliseconds: 1000));
   
-  Get.to(const NotificationScreen());
+  Get.to(
+    const NotificationScreen(),
+      transition: Transition.zoom,
+      duration: Duration(seconds: 1)
+    );
  }
 }

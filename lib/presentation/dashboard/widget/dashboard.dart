@@ -23,7 +23,7 @@ class Dashboard extends StatelessWidget {
       DateTime date = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
       return DateFormat('d MMMM yyyy')
           .format(date)
-          .toUpperCase(); // E.g., '12 JUNE 2021'
+          .toUpperCase(); 
     }
 
     return Column(
@@ -37,76 +37,74 @@ class Dashboard extends StatelessWidget {
               child: CustomImageView(
                 url: news.image,
                 width: 100,
-                height: 150,
+                height: 100,
+                fit: BoxFit.cover,
               ),
             ),
             const SizedBox(width: 12),
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 100,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: 100,
+                        child: TextCustom(
+                          text: news.source,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          color: ColorConstant.whiteScreen,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.left,
+                          isTitle: true,
+                          isFonts: 'Rubik',
+                        ),
+                      ),
+                      const SizedBox(width: 50),
+                      SizedBox(
+                        width: 100,
+                        child: TextCustom(
+                          text: formatDate(news.datetime),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          textAlign: TextAlign.left,
+                          color: ColorConstant.whiteScreen,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          isTitle: true,
+                          isFonts: 'Rubik',
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Link(
+                    uri: Uri.parse(news.url),
+                    builder: (context, followLink) {
+                      return InkWell(
+                        onTap: followLink,
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxHeight: 72,
+                            maxWidth: 260,
+                          ),
                           child: TextCustom(
-                            text: news.source,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12,
-                            color: ColorConstant.whiteScreen,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                            text: news.summary,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
                             textAlign: TextAlign.left,
-                            isTitle: true,
-                            isFonts: 'Rubik',
+                            color: ColorConstant.whiteScreen,
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        const SizedBox(width: 50),
-                        SizedBox(
-                          width: 100,
-                          child: TextCustom(
-                            text: formatDate(news.datetime),
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12,
-                            textAlign: TextAlign.left,
-                            color: ColorConstant.whiteScreen,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            isTitle: true,
-                            isFonts: 'Rubik',
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    Link(
-                      uri: Uri.parse(news.url),
-                      builder: (context, followLink) {
-                        return InkWell(
-                          onTap: followLink,
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints(
-                              maxHeight: 72,
-                              maxWidth: 260,
-                            ),
-                            child: TextCustom(
-                              text: news.summary,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                              textAlign: TextAlign.left,
-                              color: ColorConstant.whiteScreen,
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
           ],
