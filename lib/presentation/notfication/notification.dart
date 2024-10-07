@@ -5,6 +5,7 @@ import 'package:finance_digest/widget/custom_image_view.dart';
 import 'package:finance_digest/widget/image_constant.dart';
 import 'package:finance_digest/widget/textcustom.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -76,14 +77,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-              child: Button(
-                label: "Continue",
-                onPressed: () {
-                  controller.showAlertDialog(context);
-                },
-                type: ButtonType.ACTION,
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                child: Button(
+                  label: "Continue",
+                  onPressed: () {
+                    controller.showAlertDialog(context);
+                  },
+                  type: ButtonType.ACTION,
+                ),
               ),
             ),
           ],

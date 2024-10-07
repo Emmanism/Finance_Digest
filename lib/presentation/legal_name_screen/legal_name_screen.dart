@@ -92,22 +92,24 @@ class LegalNameScreen extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: Obx(() {
-        return FloatingActionButton(
-          backgroundColor:
-              isTyped.value ? ColorConstant.buttonColor : ColorConstant.button,
-          onPressed: () {
-            controller.onTapStore();
-          },
-          child: CustomImageView(
-            svgPath: ImageConstant.imgFrameArrow,
-            height: 24,
-            width: 24,
-            color: ColorConstant.whiteScreen,
-          ),
-          shape: CircleBorder(side: BorderSide.none),
-        );
-      }),
+      floatingActionButton: SafeArea(
+        child: Obx(() {
+          return FloatingActionButton(
+            backgroundColor:
+                isTyped.value ? ColorConstant.buttonColor : ColorConstant.button,
+            onPressed: () {
+              controller.onTapStore();
+            },
+            child: CustomImageView(
+              svgPath: ImageConstant.imgFrameArrow,
+              height: 24,
+              width: 24,
+              color: ColorConstant.whiteScreen,
+            ),
+            shape: CircleBorder(side: BorderSide.none),
+          );
+        }),
+      ),
     );
   }
 }
