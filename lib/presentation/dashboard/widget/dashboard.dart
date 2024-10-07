@@ -37,7 +37,7 @@ class Dashboard extends StatelessWidget {
               child: CustomImageView(
                 url: news.image,
                 width: 100,
-                height: 100,
+                height: 150,
               ),
             ),
             const SizedBox(width: 12),
