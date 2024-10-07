@@ -4,6 +4,7 @@ import 'package:finance_digest/presentation/dashboard/widget/dashboard.dart';
 import 'package:finance_digest/widget/color_constant.dart';
 import 'package:finance_digest/widget/custom_image_view.dart';
 import 'package:finance_digest/widget/image_constant.dart';
+import 'package:finance_digest/widget/loader.dart';
 import 'package:finance_digest/widget/textcustom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -69,7 +70,9 @@ class _DashboardScreenState extends State<DashboardScreen>
         body:  SafeArea(child: Obx(() {
         if (controller.isLoading.value) {
           return Center(
-              child: CircularProgressIndicator());
+              child: CircularProgressIndicator(
+                color: ColorConstant.whiteScreen,
+              ));
         }  else if (controller.error.value.isNotEmpty) {
           return Container();
         } else {
