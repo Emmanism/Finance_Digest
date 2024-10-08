@@ -62,31 +62,67 @@ class LegalNameScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
+                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Container(
-                    child: InputField(
-                      type: InputType.firstname,
-                      placeholder: "First name",
-                      controller: controller.firstnameController,
-                      onChanged: (String text) {
-                        isTyped.value = text.isNotEmpty;
-                      },
-                    ),
-                  ),
+                  child: Obx(() {
+                    return Column(
+                      children: [
+                        InputField(
+                          type: InputType.firstname,
+                          placeholder: "First name",
+                          controller: controller.firstnameController,
+                          onChanged: (String text) {
+                            isTyped.value = text.isNotEmpty;
+                          },
+                        ),
+                        if (controller.isFirstNameError.value)
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 4.0),
+                              child: Text(
+                                'Enter your first name.',
+                                style: TextStyle(
+                                  color: Colors.red,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
+                    );
+                  }),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Container(
-                    child: InputField(
-                      type: InputType.lastname,
-                      placeholder: "Last name",
-                      controller: controller.lastnameController,
-                      onChanged: (String text) {
-                        isTyped.value = text.isNotEmpty;
-                      },
-                    ),
-                  ),
+                  child: Obx(() {
+                    return Column(
+                      children: [
+                        InputField(
+                          type: InputType.lastname,
+                          placeholder: "Last name",
+                          controller: controller.lastnameController,
+                          onChanged: (String text) {
+                            isTyped.value = text.isNotEmpty;
+                          },
+                        ),
+                        if (controller.isLastNameError.value)
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 4.0),
+                              child: Text(
+                                'Enter your last name.',
+                                style: TextStyle(
+                                  color: Colors.red,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
+                    );
+                  }),
                 ),
               ],
             ),

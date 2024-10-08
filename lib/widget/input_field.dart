@@ -167,6 +167,7 @@ class InputFieldState extends State<InputField> {
               },
               onTap: () {
                 focusNode.requestFocus();
+                
               },
               onTapOutside: (_) {
                 focusNode.unfocus();
