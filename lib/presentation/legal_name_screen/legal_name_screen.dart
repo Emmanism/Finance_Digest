@@ -62,7 +62,7 @@ class LegalNameScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                 Padding(
+                Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Obx(() {
                     return Column(
@@ -73,6 +73,7 @@ class LegalNameScreen extends StatelessWidget {
                           controller: controller.firstnameController,
                           onChanged: (String text) {
                             isTyped.value = text.isNotEmpty;
+                            controller.isFirstNameError.value = false;
                           },
                         ),
                         if (controller.isFirstNameError.value)
@@ -104,6 +105,7 @@ class LegalNameScreen extends StatelessWidget {
                           controller: controller.lastnameController,
                           onChanged: (String text) {
                             isTyped.value = text.isNotEmpty;
+                              controller.isLastNameError.value = false;
                           },
                         ),
                         if (controller.isLastNameError.value)
