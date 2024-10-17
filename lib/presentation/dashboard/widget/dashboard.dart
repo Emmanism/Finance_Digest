@@ -5,6 +5,7 @@ import 'package:finance_digest/widget/custom_image_view.dart';
 import 'package:finance_digest/widget/image_constant.dart';
 import 'package:finance_digest/widget/textcustom.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/link.dart';
@@ -13,17 +14,16 @@ import 'package:external_app_launcher/external_app_launcher.dart';
 
 class Dashboard extends StatelessWidget {
   final News news;
-  Dashboard({required this.news});
+  final DashboardController controller;
+  Dashboard({required this.news, required this.controller});
 
-  DashboardController controller = Get.put(DashboardController());
+  // DashboardController controller = Get.put(DashboardController());
 
   @override
   Widget build(BuildContext context) {
     String formatDate(int timestamp) {
       DateTime date = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
-      return DateFormat('d MMMM yyyy')
-          .format(date)
-          .toUpperCase(); 
+      return DateFormat('d MMMM yyyy').format(date).toUpperCase();
     }
 
     return Column(
@@ -104,6 +104,8 @@ class Dashboard extends StatelessWidget {
                       );
                     },
                   ),
+
+          
                 ],
               ),
             ),

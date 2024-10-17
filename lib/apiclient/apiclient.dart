@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 class ApiClient extends GetConnect {
   final String _token = 'crals9pr01qhk4bqotb0crals9pr01qhk4bqotbg';
 
-  Future<Response> fetchNews() async {
+
+  Future<Response> fetchNews(int limit, int page) async {
     final String url =
-            'https://finnhub.io/api/v1/news?category=general&token=$_token';
+            'https://finnhub.io/api/v1/news?category=general&token=$_token&limit=$limit&page=$page';
 
     try {
       final response = await get(url);
